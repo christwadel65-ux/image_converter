@@ -26,8 +26,8 @@ image_converter/
 │
 ├── 📂 bin/                   # Fichiers compilés
 │   ├── Debug/
-│   └── Release/
-│       └── publish/          # Version standalone publiée
+│   ├── Release/
+│   └── 📂 Publish/           # Version standalone optimisée (87.59 MB)
 │
 ├── App.xaml                  # Point d'entrée WPF
 ├── App.xaml.cs
@@ -55,6 +55,7 @@ image_converter/
 - **Préréglages de taille** : HD, Full HD, 4K, Instagram, Facebook, Miniature
 - **Verrouillage du ratio** : Maintient les proportions automatiquement
 - **Journal d'activité** : Suivi en temps réel du traitement
+- **Bouton Réinitialiser** : Réinitialisez tous les paramètres en un clic
 
 ### 📊 Modes de Redimensionnement
 
@@ -67,9 +68,9 @@ image_converter/
 ## 🚀 Installation et Utilisation
 
 ### Option 1 : Version Standalone (Recommandée)
-1. Téléchargez depuis `bin/Release/publish/`
-2. Lancez `ImageConvertResize.exe`
-3. Aucune installation nécessaire !
+1. Téléchargez `ImageConvertResize.exe` depuis `bin/Publish/` (87.59 MB)
+2. Lancez le fichier exécutable
+3. Aucune installation nécessaire ! (fichier auto-extractible et compressé)
 
 ### Option 2 : Compilation depuis le code source
 ```powershell
@@ -125,11 +126,24 @@ Le format **AVIF** (AV1 Image File Format) est supporté via ImageMagick :
 
 Projet sous licence **MIT** - Voir [LICENSE](docs/LICENSE)
 
+## � Distribution
+
+Le fichier `ImageConvertResize.exe` dans `bin/Publish/` est :
+- ✅ **Auto-extractible** : Les DLL se décompressent automatiquement au premier lancement
+- ✅ **Optimisé** : Compression intégrée (218 MB → 87.59 MB)
+- ✅ **Autonomous** : Stocké avec Git LFS pour un meilleur contrôle de version
+
 ## 📧 Support
 
 Pour toute question ou suggestion, consultez la documentation complète dans [docs/README.md](docs/README.md) ou le changelog dans [docs/AMELIORATIONS.md](docs/AMELIORATIONS.md).
 
 ---
 
-**Image Converter Pro v1.0.0**  
+**Image Converter Pro v1.1.0**  
 © 2025 - Auteur: C.L (Skill teams)
+
+### Dernières améliorations (v1.1.0)
+- ✨ Ajout du bouton "Réinitialiser" pour réinitialiser tous les paramètres
+- 📦 Optimisation de la taille (87.59 MB avec compression intégrée)
+- 🔧 Publication centralisée dans `bin/Publish/`
+- 📝 Meilleure gestion des fichiers avec Git LFS
