@@ -1,0 +1,62 @@
+# Répertoires de compilation et de publication
+bin/
+obj/
+.vs/
+.vscode/
+
+# Fichiers de build
+*.dll
+*.exe
+*.pdb
+*.cache
+*.suo
+*.user
+*.userprefs
+*.sln.docstates
+
+# Fichiers générés
+*.g.cs
+*.g.xaml.cs
+*.xaml.bak
+MainWindow_backup.*
+
+# Dossiers de sortie
+publish/
+Release/
+Debug/
+
+# Fichiers temporaires
+*.tmp
+*.temp
+*.log
+*.swp
+*.swo
+*~
+
+# Nuget
+packages/
+.nuget/
+*.nupkg
+
+# IDE et éditeurs
+.idea/
+.DS_Store
+Thumbs.db
+*.sublime-project
+*.sublime-workspace
+
+# Fichiers de configuration locaux
+appsettings.local.json
+launchSettings.json
+
+# Répertoires spécifiques à ignorer
+.git/
+.github/
+
+# Fichiers de résultats de test
+TestResults/
+*.trx
+
+# Artifacts
+artifacts/
+dist/
