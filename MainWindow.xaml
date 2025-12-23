@@ -148,7 +148,18 @@
         </Style>
     </Window.Resources>
     
-    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+    <DockPanel>
+        <!-- Menu Bar -->
+        <Menu DockPanel.Dock="Top" Background="White" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1">
+            <MenuItem Header="📖 Aide">
+                <MenuItem Header="User Guide" Click="MenuItem_UserGuide_Click"/>
+                <Separator/>
+                <MenuItem Header="À propos" Click="MenuItem_About_Click"/>
+            </MenuItem>
+        </Menu>
+        
+        <!-- Contenu Principal -->
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" DockPanel.Dock="Bottom">
         <Grid Margin="12" Background="Transparent">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -510,4 +521,5 @@
         </Grid>
         </Grid>
     </ScrollViewer>
+    </DockPanel>
 </Window>

@@ -446,6 +446,30 @@ namespace ImageConvertResize.WPF
 
         private void CancelButton_Click(object sender, RoutedEventArgs e) => _cts?.Cancel();
 
+        // Gestionnaires du menu Aide
+        private void MenuItem_UserGuide_Click(object sender, RoutedEventArgs e)
+        {
+            var helpWindow = new HelpWindow();
+            helpWindow.Owner = this;
+            helpWindow.ShowDialog();
+        }
+
+        private void MenuItem_About_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.MessageBox.Show(
+                this,
+                "Image Converter Pro v1.0.0\n\n" +
+                "Application professionnelle de conversion et redimensionnement d'images\n\n" +
+                "Technologies : .NET 8, WPF, SixLabors.ImageSharp, ComputeSharp\n" +
+                "GPU : DirectX 12 (fallback WARP)\n\n" +
+                "© 2025 Image Converter Pro\n" +
+                "Licence : MIT",
+                "Auteur: C.L (Skill teams)",
+                "À propos d'Image Converter Pro",
+                MessageBoxButton.OK,
+                MessageBoxImage.Information);
+        }
+
         private void ToggleUi(bool enable)
         {
             InputPathTextBox.IsEnabled = enable;
