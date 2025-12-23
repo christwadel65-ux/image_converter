@@ -1,5 +1,6 @@
 # Répertoires de compilation et de publication
-bin/
+bin/*
+!bin/Publish/
 obj/
 .vs/
 .vscode/
@@ -17,8 +18,6 @@ App.xaml.cs
 # ImageConvertResize.WPF.csproj sera partagé pour référence
 
 # Fichiers de build
-*.dll
-*.exe
 *.pdb
 *.cache
 *.suo
@@ -33,7 +32,6 @@ App.xaml.cs
 MainWindow_backup.*
 
 # Dossiers de sortie
-publish/
 Release/
 Debug/
 
