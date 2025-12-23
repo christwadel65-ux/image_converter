@@ -2,137 +2,134 @@
 
 Application WPF (.NET 8) moderne et professionnelle pour convertir et redimensionner vos images en lot avec facilité.
 
+## 📁 Structure du Projet
+
+```
+image_converter/
+├── 📂 src/
+│   ├── 📂 Helpers/           # Classes utilitaires
+│   │   ├── AvifHelper.cs     # Gestion du format AVIF (ImageMagick)
+│   │   ├── GpuResizer.cs     # Redimensionnement GPU (ComputeSharp)
+│   │   ├── IcoHelper.cs      # Création de fichiers ICO
+│   │   └── ImageHelper.cs    # Utilitaires images (ImageSharp)
+│   │
+│   └── 📂 Windows/           # Fenêtres WPF
+│       ├── MainWindow.xaml   # Fenêtre principale
+│       ├── MainWindow.xaml.cs
+│       ├── HelpWindow.xaml   # Fenêtre d'aide
+│       └── HelpWindow.xaml.cs
+│
+├── 📂 docs/                  # Documentation
+│   ├── README.md             # Documentation complète
+│   ├── AMELIORATIONS.md      # Changelog des améliorations
+│   └── LICENSE               # Licence MIT
+│
+├── 📂 bin/                   # Fichiers compilés
+│   ├── Debug/
+│   └── Release/
+│       └── publish/          # Version standalone publiée
+│
+├── App.xaml                  # Point d'entrée WPF
+├── App.xaml.cs
+├── ImageConvertResize.WPF.csproj  # Fichier projet
+└── image_converter.sln       # Solution Visual Studio
+```
+
 ## ✨ Fonctionnalités Principales
 
 ### 📐 Conversion et Redimensionnement
-- **Conversion de formats** : JPG, PNG, WebP, BMP, TIFF, ICO
-- **Traitement par lot** : Convertissez plusieurs images à la fois
-- **Redimensionnement intelligent** : Préserve les proportions ou ajustez comme vous le souhaitez
-- **Contrôle de qualité** : Réglez la qualité pour JPG et WebP
-- **Métadonnées EXIF** : Préservez les données de votre appareil photo
+- **Formats supportés** : JPG, PNG, WebP, **AVIF**, BMP, TIFF, ICO, GIF
+- **Traitement par lot** : Convertissez plusieurs images simultanément
+- **Redimensionnement intelligent** : Préserve les proportions automatiquement
+- **Contrôle de qualité** : Réglez la qualité pour JPG, WebP et AVIF (0-100)
+- **Métadonnées EXIF** : Préservation et rotation automatique selon EXIF
 
 ### 🚀 Performance
-- **Traitement parallèle** : Utilise tous les cores de votre processeur
-- **Accélération GPU (DirectX 12)** via ComputeSharp — fallback WARP si pas de GPU
-- **Aperçu instantané** : Voir le résultat en temps réel
+- **Traitement parallèle** : Utilise tous les cœurs CPU disponibles
+- **Accélération GPU** : DirectX 12 via ComputeSharp (fallback WARP)
+- **Format AVIF** : Compression optimale via ImageMagick
 
-### 🎨 Interface Moderne et Intuitive
-- **Aperçu avant/après** : Comparez les dimensions et la taille des fichiers
-- **Glisser-déposer** : Déposez vos images directement dans l'application
+### 🎨 Interface Moderne
+- **Aperçu en temps réel** : Visualisez avant/après avec statistiques
+- **Glisser-déposer** : Interface intuitive et rapide
 - **Préréglages de taille** : HD, Full HD, 4K, Instagram, Facebook, Miniature
-- **Verrouillage du ratio d'aspect** : Maintenez les proportions automatiquement
-- **Journal d'activité** : Suivez la progression du traitement en temps réel
+- **Verrouillage du ratio** : Maintient les proportions automatiquement
+- **Journal d'activité** : Suivi en temps réel du traitement
 
-### 📊 Statistiques Détaillées
-- Affichage automatique des dimensions de l'image originale
-- Affichage de la taille du fichier
-- Affichage des nouvelles dimensions après redimensionnement
-- Calcul du pourcentage de réduction
-
-## 🎯 Modes de Redimensionnement
+### 📊 Modes de Redimensionnement
 
 | Mode | Description |
 |------|-------------|
-| **Ajuster (proportionnel)** | Redimensionne en conservant les proportions (par défaut) |
-| **Remplir (rogner)** | Remplit les dimensions en rognant si nécessaire |
-| **Étirer (déformer)** | Étire l'image pour remplir exactement les dimensions |
+| **Ajuster (proportionnel)** | Conserve les proportions (défaut) |
+| **Remplir (rogner)** | Remplit en rognant si nécessaire |
+| **Étirer (déformer)** | Remplit exactement les dimensions |
 
 ## 🚀 Installation et Utilisation
 
 ### Option 1 : Version Standalone (Recommandée)
-1. Téléchargez les fichiers depuis le dossier `bin/Release/publish/`
-2. Exécutez `ImageConvertResize.exe`
-3. Aucune dépendance requise — l'application inclut tout ce dont elle a besoin
+1. Téléchargez depuis `bin/Release/publish/`
+2. Lancez `ImageConvertResize.exe`
+3. Aucune installation nécessaire !
 
-### Option 2 : Depuis le Code Source
-```bash
+### Option 2 : Compilation depuis le code source
+```powershell
 # Clone le repository
 git clone <votre-repo>
 cd image_converter
 
-# Restaure les dépendances
-dotnet restore
+# Compilation
+dotnet build ImageConvertResize.WPF.csproj
 
-# Lance l'application
-dotnet run
+# Ou pour créer une version standalone
+dotnet publish ImageConvertResize.WPF.csproj -c Release
 ```
 
-## 📦 Publier une Version Standalone
+## 🛠️ Technologies Utilisées
 
-```bash
-dotnet publish -c Release -r win-x64 --self-contained
-```
+- **.NET 8.0** : Framework moderne et performant
+- **WPF (Windows Presentation Foundation)** : Interface utilisateur riche
+- **SixLabors.ImageSharp 3.1.12** : Traitement d'images haute performance
+- **ComputeSharp 3.2.0** : Accélération GPU via DirectX 12
+- **Magick.NET 14.10.0** : Support AVIF et formats avancés
 
-Le fichier `ImageConvertResize.exe` sera généré dans `bin/Release/publish/`
+## 📋 Prérequis
 
-## ⚙️ Configuration
+- **Windows 10/11** (64-bit)
+- **.NET 8.0 Runtime** (pour compilation uniquement)
+- **GPU compatible DirectX 12** (optionnel, pour accélération GPU)
 
-### Dossier de Destination par Défaut
-Par défaut, les images sont enregistrées dans :
-```
-C:\Mes Documents\image converter\
-```
+## 🎯 Guide d'Utilisation Rapide
 
-### Formats Supportés
-- **Entrée** : JPG, JPEG, PNG, WebP, BMP, TIFF, TIF, GIF
-- **Sortie** : JPG, PNG, WebP, BMP, TIFF, ICO
+1. **Chargez une image** : Cliquez sur "📂 Parcourir fichier" ou glissez-déposez
+2. **Choisissez le format** : Sélectionnez JPG, PNG, WebP, AVIF, etc.
+3. **Définissez les dimensions** : Utilisez les préréglages ou saisissez manuellement
+4. **Réglez la qualité** : Pour JPG, WebP et AVIF (85 par défaut)
+5. **Démarrez** : Cliquez sur "▶️ Démarrer le traitement"
 
-## 📋 Options Avancées
+### Traitement par Lot
+1. Cliquez sur "📁 Parcourir dossier"
+2. Sélectionnez le dossier contenant vos images
+3. Activez "📂 Traiter sous-dossiers" si nécessaire
+4. Choisissez le dossier de sortie
+5. Lancez le traitement !
 
-- ✅ Écraser les fichiers existants
-- ✅ Conserver le nom d'origine (sans suffixe de dimensions)
-- ✅ Traiter les sous-dossiers récursivement
-- ✅ Préserver les métadonnées EXIF
-- ✅ Rotation automatique selon EXIF
-- ⚙️ Réglez la résolution (DPI)
+## 🌟 Format AVIF
 
-## 🛠️ Technologies
+Le format **AVIF** (AV1 Image File Format) est supporté via ImageMagick :
+- ✅ **Meilleure compression** que JPEG et WebP
+- ✅ **Qualité supérieure** à taille égale
+- ✅ **Support de la transparence** comme PNG
+- ✅ **Contrôle de qualité** de 0 à 100
 
-- **Framework** : .NET 8 (.NET 8.0-windows)
-- **UI** : WPF (Windows Presentation Foundation)
-- **Traitement d'image** : SixLabors.ImageSharp 3.1.x
-- **GPU** : ComputeSharp 3.2.0 (DirectX 12 / WARP fallback)
-- **Architecture** : WinForms pour les dialogues de fichier
+## 📝 Licence
 
-## 📦 Dépendances NuGet
+Projet sous licence **MIT** - Voir [LICENSE](docs/LICENSE)
 
-```xml
-<PackageReference Include="SixLabors.ImageSharp" Version="3.1.12" />
-<PackageReference Include="SixLabors.ImageSharp.Drawing" Version="1.0.0" />
-<PackageReference Include="ComputeSharp" Version="3.2.0" />
-```
+## 📧 Support
 
-## 📝 Notes Importantes
+Pour toute question ou suggestion, consultez la documentation complète dans [docs/README.md](docs/README.md) ou le changelog dans [docs/AMELIORATIONS.md](docs/AMELIORATIONS.md).
 
-- Le redimensionnement CPU utilise l'algorithme **Lanczos3** pour une meilleure qualité
-- Les aperçus utilisent **Box resampler** pour une rapidité optimale
-- Les ICO générés contiennent des PNG multi-résolutions (16–256 px)
-- Support complet du **drag & drop** pour l'import d'images
-- L'application crée automatiquement un dossier "image converter" dans le dossier de destination
+---
 
-## 🔧 Troubleshooting
-
-**L'aperçu ne s'affiche pas ?**
-- Assurez-vous que le fichier image est valide
-- Essayez de récharger l'image avec le bouton "Fichier"
-
-**Les images traitées ne sont pas sauvegardées ?**
-- Vérifiez que le dossier de destination existe et est accessible
-- Vérifiez les permissions d'accès au dossier
-
-**Performance lente ?**
-- Désactivez la "Préservation des métadonnées EXIF" pour les grands lots
-- Utilisez une résolution (DPI) plus basse si elle n'est pas nécessaire
-
-## 📄 Licence
-
-Ce projet est fourni à titre d'exemple éducatif.
-
-## 👨‍💻 Développement
-
-Le code source est bien organisé et commenté :
-- `MainWindow.xaml` - Interface utilisateur
-- `MainWindow.xaml.cs` - Logique principale
-- `ImageHelper.cs` - Utilitaires de traitement d'image
-- `GpuResizer.cs` - Accélération GPU
-- `IcoHelper.cs` - Génération de fichiers ICO
+**Image Converter Pro v1.0.0**  
+© 2025 - Auteur: C.L (Skill teams)

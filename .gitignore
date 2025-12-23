@@ -4,6 +4,18 @@ obj/
 .vs/
 .vscode/
 
+# Code source (non partagé publiquement)
+src/
+*.cs
+*.xaml
+*.xaml.cs
+App.xaml
+App.xaml.cs
+!docs/**
+
+# Fichiers de projet (partiellement partagés)
+# ImageConvertResize.WPF.csproj sera partagé pour référence
+
 # Fichiers de build
 *.dll
 *.exe

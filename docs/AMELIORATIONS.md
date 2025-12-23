@@ -2,7 +2,15 @@
 
 ## ✨ Nouvelles Fonctionnalités Ajoutées
 
-### 📐 1. Préréglages de Taille
+### �️ Support AVIF (23 décembre 2025)
+- **Format moderne AVIF** : Support complet du format AVIF (AV1 Image File Format)
+- **Lecture** : Chargement et traitement des fichiers .avif
+- **Écriture** : Conversion et export au format AVIF avec contrôle de qualité
+- **Compression optimale** : AVIF offre une meilleure compression que JPEG et WebP
+- **Intégration via ImageMagick** : Utilisation de Magick.NET-Q8 pour le support AVIF
+- **Qualité réglable** : Contrôle de la qualité d'encodage pour AVIF (0-100)
+
+### �📐 1. Préréglages de Taille
 Boutons rapides pour les résolutions les plus courantes :
 - **HD** (1280 x 720)
 - **Full HD** (1920 x 1080)
